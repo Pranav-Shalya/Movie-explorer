@@ -1,70 +1,133 @@
-# Getting Started with Create React App
+**Movie Explorer**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Movie Explorer is a React application that lets users discover movies, search by title, filter results, and maintain a personal watchlist. It uses a public movie API for live data and offers a modern, responsive UI with detailed movie information and similar recommendations.
 
-## Available Scripts
+**Features**
 
-In the project directory, you can run:
+Discover trending/popular movies on the main page
 
-### `npm start`
+Search movies by title using a search bar
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Filter movies by genre, minimum rating, and release year
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+View detailed information in a movie modal (poster, overview, rating, year, similar titles)
 
-### `npm test`
+Add or remove movies from a watchlist
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Separate “Discover” and “Watchlist” views managed in React
 
-### `npm run build`
+Responsive design with movie cards and smooth styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Tech Stack**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Frontend: React (Create React App)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Styling: CSS (global styles in App.css and index.css)
 
-### `npm run eject`
+API Layer: Custom helper functions in util/api.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+State Management: React hooks (useState, useEffect)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Deployment: Vercel
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Live Demo
+https://movie-explorer-mauve-xi.vercel.app/
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+https://movie-explorer-git-main-pranav-shalyas-projects.vercel.app/
 
-## Learn More
+**Folder Structure**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+text
+.
+├── public/
+├── src/
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── reportWebVitals.js
+│   ├── setupTests.js
+│   ├── Watchlist.jsx
+│   └── util/
+│       └── api.js
+├── .env
+├── package.json
+└── README.md
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+App.js – main component handling routing between Discover and Watchlist views, search/filter UI, and modal logic.
 
-### Code Splitting
+Watchlist.jsx – dedicated component/page for rendering movies saved to the watchlist.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+util/api.js – all API calls and helper functions for fetching movies (trending, search, filters, details, similar).
 
-### Analyzing the Bundle Size
+App.css / index.css – global styling, layout, and theming.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Getting Started
+Prerequisites
 
-### Making a Progressive Web App
+Node.js and npm
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+API key from the movie service you are using (e.g., TMDb)
 
-### Advanced Configuration
+Installation
+bash
+# Clone the repository
+git clone https://github.com/<your-username>/movie-explorer.git
+cd movie-explorer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Install dependencies
+npm install
+Create a .env file in the project root:
 
-### Deployment
+bash
+REACT_APP_MOVIE_API_KEY=your_api_key_here
+REACT_APP_MOVIE_API_BASE_URL=https://api.themoviedb.org/3
+(Use the exact variable names that util/api.js expects.)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Run in development
+bash
+npm start
+Open http://localhost:3000 in your browser.
 
-### `npm run build` fails to minify
+Build for production
+bash
+npm run build
+Deploy the build folder to Vercel or any static hosting provider.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Core Functionality
+Discover view
+
+Fetches trending or popular movies on load (via util/api.js).
+
+Allows searching by movie title and refining results with genre, rating, and year filters.
+
+Renders movies as cards with poster, title, year, and rating.
+
+Clicking a card opens a modal with full details and a list of similar movies.
+
+Watchlist view
+
+Displays all movies marked as “Add to Watchlist”.
+
+Allows removing movies from the watchlist.
+
+Watchlist can be stored in React state plus localStorage to persist between refreshes (if implemented in your app).
+
+Environment & Configuration
+Keep API keys and base URLs in .env and never commit them to Git.
+
+When deploying to Vercel, configure the same environment variables in the project settings.
+
+**Future Improvements**
+Separate route for each movie (/movie/:id) with a dedicated detail page.
+
+Pagination or infinite scroll for large result sets.
+
+User authentication and a backend (Node/Express + MongoDB) to save watchlists per user.
+
+Dark/light theme toggle and more accessibility improvements.
+
+**License**
+This project is intended for learning and portfolio use. You are free to modify and extend it for your own purposes.
