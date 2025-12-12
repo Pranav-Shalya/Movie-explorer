@@ -37,7 +37,6 @@ https://movie-explorer-git-main-pranav-shalyas-projects.vercel.app/
 
 **Folder Structure**
 
-text
 .
 ├── public/
 ├── src/
@@ -55,6 +54,7 @@ text
 ├── .env
 ├── package.json
 └── README.md
+
 
 App.js – main component handling routing between Discover and Watchlist views, search/filter UI, and modal logic.
 
@@ -116,11 +116,13 @@ Allows removing movies from the watchlist.
 Watchlist can be stored in React state plus localStorage to persist between refreshes (if implemented in your app).
 
 Environment & Configuration
+
 Keep API keys and base URLs in .env and never commit them to Git.
 
 When deploying to Vercel, configure the same environment variables in the project settings.
 
 **Future Improvements**
+
 Separate route for each movie (/movie/:id) with a dedicated detail page.
 
 Pagination or infinite scroll for large result sets.
@@ -130,4 +132,5 @@ User authentication and a backend (Node/Express + MongoDB) to save watchlists pe
 Dark/light theme toggle and more accessibility improvements.
 
 **License**
+
 This project is intended for learning and portfolio use. You are free to modify and extend it for your own purposes.
